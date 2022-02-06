@@ -12,7 +12,7 @@ const minutesRef = document.querySelector('[data-minutes]');
 const secondsRef = document.querySelector('[data-seconds]');
 btnStartRef.disabled = true;
 
-let selectedDate; 
+let selectedDate;
 
 const options = {
   enableTime: true,
@@ -35,7 +35,7 @@ const options = {
     if (selectedDates[0] > options.defaultDate) {
       btnStartRef.disabled = false;
     }
-    return selectedDate = selectedDates[0];
+    return (selectedDate = selectedDates[0]);
   },
 };
 
@@ -67,28 +67,28 @@ function setRemainingTime({ days, hours, minutes, seconds }) {
   hoursRef.textContent = `${hours}`;
   minutesRef.textContent = `${minutes}`;
   secondsRef.textContent = `${seconds}`;
-};
+}
 
 function convertMs(ms) {
-    const second = 1000;
-    const minute = second * 60;
-    const hour = minute * 60;
-    const day = hour * 24;
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
 
-    const days = addLeadingZero(Math.floor(ms / day));
-    const hours = addLeadingZero(Math.floor((ms % day) / hour));
-    const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
-    const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+  const days = addLeadingZero(Math.floor(ms / day));
+  const hours = addLeadingZero(Math.floor((ms % day) / hour));
+  const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
+  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
 
-    return { days, hours, minutes, seconds };
-};
+  return { days, hours, minutes, seconds };
+}
 
 function addLeadingZero(value) {
-    return String(value).padStart(2, '0');
-};
+  return String(value).padStart(2, '0');
+}
 
 //---------------STYLES---------------\\
-const timerRef = document.querySelector('.timer')
+const timerRef = document.querySelector('.timer');
 const fieldRef = document.querySelectorAll('.field');
 
 inputRef.style.textAlign = 'center';
@@ -96,12 +96,19 @@ inputRef.style.backgroundColor = '#3085d6';
 inputRef.style.color = '#ffffff';
 inputRef.style.borderColor = '#000000';
 inputRef.style.borderRadius = '5px';
+inputRef.style.padding = '5px';
+inputRef.style.fontSize = '16px';
+
 btnStartRef.style.borderRadius = '5px';
+btnStartRef.style.padding = '5px';
+btnStartRef.style.fontSize = '16px';
+btnStartRef.style.fontWeight = '700';
+
 timerRef.style.display = 'flex';
 for (const field of fieldRef) {
   field.style.display = 'flex';
   field.style.flexDirection = 'column';
   field.style.alignItems = 'center';
-  field.style.marginRight = '10px';
+  field.style.marginRight = '20px';
   field.firstElementChild.style.fontSize = '40px';
 }
